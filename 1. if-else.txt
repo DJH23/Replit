@@ -1,0 +1,15 @@
+var money = 55;
+var price = 80;
+
+if (money >= price) {
+  console.log("You have enough money.");
+  var moneyLeftOver = money - price;
+  console.log("You will have " + moneyLeftOver + "£ left over after purchase.");
+}
+else if (money > (price - 20)) {
+  console.log("Don't worry! We'll give you a discount of "  + (price - money) + "£ so that you can buy it");
+}  
+else {
+  console.log("You don't have enough money. Get out of the shop now!");
+}
+

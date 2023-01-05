@@ -1,0 +1,40 @@
+// > < <= >= ==  compare operators
+// + - * / % math operators
+// && || ! boolean operators
+//& |
+
+x = 5<2 ? 10.234234 : "5";
+console.log(typeof x);
+
+var red, blue, green;
+
+const prompt = require('prompt-sync')();
+red = prompt('red?');
+blue = prompt('blue?');
+green = prompt('green?');
+
+
+if (red == 0 && green == 0 && blue == 0) {
+  console.log("the colour is white");
+}
+else if (red == 1 && green == 0 && blue == 0) {
+  console.log("the colour is red");
+}
+else if (red == 0 && green == 1 && blue == 0) {
+  console.log("the colour is green");
+}
+else if (red == 0 && green == 0 && blue == 1) {
+  console.log("the colour is blue");
+}
+else if (red == 1 && green == 1 && blue == 0) {
+  console.log("the colour is brown");
+}
+else if (red == 1 && green == 0 && blue == 1) {
+  console.log("the colour is purple");
+}
+else if (red == 0 && green == 1 && blue == 1) {
+  console.log("the colour is yellow");
+}
+else {
+  console.log("the colour is black");
+}

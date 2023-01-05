@@ -1,0 +1,81 @@
+//Hangman
+//*board = underscores to represent the chosen word
+//*print board
+//*"select a letter"
+//*check if it's already been played "you've already used that letter"
+//*check if it's in the chosen word and update
+//else add a line to the hangman
+//if all underscores are filled "you win"
+//if they reach X lines, game over
+
+//list of words
+var arrOfWords =
+
+  ["January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November"]
+
+//var word = "potato";
+//choose game word randomly from the words
+const word = arrOfWords[Math.floor(Math.random() * arrOfWords.length)];
+console.log("for reference: " + [word]);
+var arr = Array(word.length).fill("_");
+var usedChars = [];
+const prompt = require('prompt-sync')();
+
+var win = false;
+var lose = false;
+var lives = 10;
+
+
+while (!win && !lose) {
+  console.log(arr);
+  console.log(lives);
+  //prompt for a letter
+  console.log('Select a letter');
+  var character = prompt();
+
+  if (usedChars.includes(character, 0)) {
+    console.clear();
+    console.log("You've already used this letter. Select another");
+    continue;
+  }
+
+  usedChars.push(character);
+  console.clear();
+
+
+  var guessedRight = false;
+  for (let index = 0; index < word.length; index++) {
+    if (character.toLowerCase() === word[index].toLowerCase()) {
+      arr[index] = character;
+      guessedRight = true;
+    }
+  }
+  // checkwin
+  if (guessedRight) {
+    if (!arr.includes("_", 0)) {
+      win = true;
+    }
+  } else {
+    lives--;
+    if (lives == 0) {
+      lose = true;
+    }
+  }
+
+}
+
+if (win) {
+  console.log("You have won");
+} else {
+  console.log("You lost");
+}

@@ -1,0 +1,46 @@
+var nums = [6, 19, 155, 95, 23, 54, 12, 18, 2, 51]
+
+// var nums = [];
+// for (var i = 0; i < 10; i++) {
+//   nums.push(Math.round(Math.random() * 100));
+// }
+
+var difference;
+var totalOdd = 0;
+var totalEven = 0;
+for (var i = 0; i < nums.length; i++) {
+  if (nums[i] % 2 != 0) {
+    console.log("odd: " + nums[i]);
+    totalOdd = totalOdd + nums[i];
+  }
+  else {
+    console.log("even: " + nums[i]);
+    totalEven = totalEven + nums[i];
+  } 
+}
+
+// difference = Math.abs(totalOdd - totalEven);
+if (totalEven < totalOdd) {
+  difference = totalOdd - totalEven;
+}
+else {
+  difference = totalEven - totalOdd;
+}
+
+console.log(difference);
+
+
+
+
+
+// var names = ["Jack", "Dan", "Mike", "Jane"];
+
+// for (var i = names.length - 1; i >= 0; i--) {
+//   console.log((names.length - i) + " " + names[i]);
+// }
+//nested loops
+// for (var i = 0; i < names.length; i++) {
+//   for (var j = 0; j < names.length; j++) {
+//     console.log(names[i] + " - " + names[j]);
+//   }
+// }

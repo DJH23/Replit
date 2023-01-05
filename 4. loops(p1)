@@ -1,0 +1,31 @@
+// for(initialize; condition; update){
+// code
+// }
+
+// var n = 1;
+// for (var i=100; i > n; i = Math.floor(i / 2)){
+//   // console.log(Math.floor(i));
+//   console.log(i);
+// }
+
+// for (var i=0,j=10; i<j ;i =i+3, j =j-1){
+//   // console.log(Math.floor(i));
+//   console.log(i,j);
+// }
+
+var s = "aaaaa"
+
+i = 0
+j = s.length - 1
+var palindrome = true;
+while (i <= j) {
+  console.log(s[i], s[j]);
+  if (s[i] != s[j]) {
+    palindrome = false;
+    break;
+  }
+  i++;
+  j--;
+}
+
+console.log(palindrome);

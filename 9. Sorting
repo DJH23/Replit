@@ -1,0 +1,65 @@
+// sorting
+
+var arr = [5, 17, 23, 99, 45, 2, 13, 566, 9, 34];
+var arr2 = [6, 1, 2, 3, 4, 5]
+arr = bubbleSort(arr);
+
+console.log(arr);
+
+
+
+
+//Bubble Sort 
+function bubbleSort(arr) {
+  sortedArray = arr;
+
+  while (true) {
+    //one iteration pushing a bubble
+    var swapping_happened = false;
+    for (var i = 0; i < sortedArray.length; i++) {
+      if (sortedArray[i] > sortedArray[i + 1]) {
+        //swap them
+        swapping_happened = true;
+        var temp = sortedArray[i];
+        sortedArray[i] = sortedArray[i + 1];
+        sortedArray[i + 1] = temp;
+      }
+    }
+
+    if (!swapping_happened) {
+      break;
+    }
+  }
+
+
+  return sortedArray;
+}
+
+
+
+/////////////////////////////////////
+// insertion
+
+
+var arr = [21, 43, 12, 64, 73]
+var originalArrLength = arr.length
+
+for (let j = 0; j < originalArrLength; j++) {
+  var minSoFar = 100;
+  var indexOfminSoFar = 0;
+
+
+  // Scanning the numbers and finding the min number and its index
+  for (let index = 0; index < arr.length; index++) {
+
+    if (arr[index] < minSoFar) {
+      minSoFar = arr[index];
+      indexOfminSoFar = index;
+    }
+  }
+
+  arr.splice(indexOfminSoFar, 1)
+  shredder.push(minSoFar);
+}
+
+

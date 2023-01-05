@@ -1,0 +1,108 @@
+// X-O
+// menu with two options, start game and exit
+// user can choose
+
+
+//enable prompt and options
+
+const prompt = require('prompt-sync')();
+console.log('1. Start Game\n2. Exit')
+var choice = prompt();
+console.clear();
+
+//create board
+
+const board_size = 9;
+// var arr = Array(board_size).fill(0);
+var arr = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+
+//Start game
+if (choice == 1) {
+  console.log('you have selected to start the game');
+  console.log('1. Single Player\n2. Multiplayer');
+  choice = prompt();
+  console.clear();
+  if (choice == 1) {
+    console.log('Single Player: ');
+
+  }
+  else {
+    console.log('Multiplayer: ');
+
+    multiplayer(arr);
+  }
+}
+else {
+  console.log('you have selected to exit the game');
+}
+
+process.stdout.write("*");
+
+//function to convert array into #, X, or 0
+
+function printBoard(boardArr) {
+  for (var index = 1; index <= boardArr.length; index++) {
+
+    if (boardArr[index - 1] == 0) {
+      process.stdout.write(index.toString());
+    }
+    else if (boardArr[index - 1] == 1) {
+      process.stdout.write("X");
+    }
+    else if (boardArr[index - 1] == -1) {
+      process.stdout.write("O");
+    }
+
+    //every time index is devisible by 3, go to the next line
+    if (index % 3 == 0) {
+      process.stdout.write("\n");
+    }
+
+  }
+}
+
+//function for multiplayer that incorporates the printBoard function
+
+function multiplayer(boardArr) {
+  printBoard(boardArr);
+
+  //player one's turn
+  while (true) {
+
+
+    console.log('player one\'s turn');
+    do {
+      choice = prompt();
+      if (boardArr[choice - 1] != 0) {
+        console.log("This square is already taken. Select another square");
+      } else {
+        boardArr[choice - 1] = 1;
+        break;
+      }
+    } while (true);
+    console.clear();
+    printBoard(boardArr);
+
+    console.log('player two\'s turn');
+    do {
+      choice = prompt();
+      if (boardArr[choice - 1] != 0) {
+        console.log("This square is already taken. Select another square");
+      } else {
+        boardArr[choice - 1] = -1;
+        break;
+      }
+    } while (true);
+    console.clear();
+    printBoard(boardArr);
+  }
+}
+
+
+
+
+
+// read and comment this code
+
+// allow 1 move for player 2 after player 1's turn

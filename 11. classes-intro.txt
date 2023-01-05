@@ -1,0 +1,39 @@
+class person {
+
+  constructor(first, second) {
+    this.name = first;
+    this.setAge(second);
+  }
+  getName() {
+    return this.name;
+  }
+  getAge() {
+    return this.age;
+  }
+  setAge(number) {
+    if (number >= 21) {
+      this.age = number;
+    } else {
+      console.log("too young to be in a bar");
+    }
+
+  }
+
+  introduce() {
+    console.log("my name is " + this.name + " and I'm " + this.age + " years old.");
+  }
+
+}
+
+var p = new person("John", 23);
+
+var a = new person("Max", 13);
+var b = new person("Blah", 43);
+var c = new person("JO", 26);
+
+// c.setAge(15);
+c.age = 15;
+console.log(c.getAge());
+
+
+// console.log(p);

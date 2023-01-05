@@ -1,0 +1,20 @@
+console.log("Menu:\n1.Load Game\n2.credits\n3.Exit")
+
+const prompt = require('prompt-sync')();
+const choice = prompt('choose?');
+
+
+switch(choice) {
+  case "1":
+    console.log("soda");
+    break;
+  case "2":
+    console.log("tea");
+    break;
+  case "3":
+    console.log("blah");
+    break;
+  case "4":
+    console.log("blahblah");
+    break;
+}

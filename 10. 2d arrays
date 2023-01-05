@@ -1,0 +1,35 @@
+l2d = [[1, 2, 3, 4], [11, 22, 33, 44], [111, 222, 333, 444]];
+
+
+
+
+//console.log(l2d);
+
+
+l1d = [10, 20, 30];
+
+// for (let index = 0; index < l1d.length; index++) {
+//   console.log(l1d[index]);
+// }
+
+for (let indexBigLoop = 0; indexBigLoop < l2d.length; indexBigLoop++) {
+  for (let indexSmallLoop = 0; indexSmallLoop < l2d[indexBigLoop].length; indexSmallLoop++) {
+    console.log(indexBigLoop.toString() + " - " + indexSmallLoop.toString())
+    console.log(l2d[indexBigLoop][indexSmallLoop]);
+  }
+}
+
+/* index = 0
+index1 = 0
+0 0
+index1 = 1
+0 1
+index1 = 2
+0 2
+index1 = 3
+0 3
+index = 1
+index1 = 0
+1 0
+index1= 1
+1 1 */

@@ -1,0 +1,51 @@
+class Food {
+  constructor(name, energy, type) {
+    this.name = name;
+    this.energy = energy;
+    this.type = type;
+  }
+}
+
+class Animal {
+  constructor(name, age, diet, species, hungerLevel) {
+    this.name = name;
+    this.age = age;
+    this.species = species;
+    this.diet = diet;
+    this.hungerLevel = hungerLevel;
+  }
+
+  makeNoise() {
+    console.log(this.name + " makes some noise");
+  }
+
+
+  eat(food) {
+    if (food.type === this.diet) {
+      console.log(this.name + " eats " + food.name);
+      this.hungerLevel -= food.energy;
+    }
+    else {
+      console.log("This animal doesn't eat " + food.name)
+    }
+  }
+
+}
+
+
+var a1 = new Animal("Magnus", 7, "C", "Wolf", 10);
+var a2 = new Animal("Jimmy", 9, "C", "Wolf", 5);
+var a3 = new Animal("John", 7, "H", "Cow", 8);
+
+var f1 = new Food("meat", 7, "C");
+var f2 = new Food("Cabbage", 3, "H");
+
+a2.makeNoise()
+
+console.log(a3.hungerLevel);
+
+a3.eat(f1);
+
+console.log(a3.hungerLevel);
+
+

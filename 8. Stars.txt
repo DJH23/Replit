@@ -1,0 +1,99 @@
+var b = 8;
+
+//starsOne(b);
+
+// *
+// *
+// *
+// *
+// *
+
+// starsTwo(b);
+
+//*****
+
+// starsThree(b);
+
+// *****
+// *****
+// *****
+// *****
+// *****
+
+//starsFour(b);
+
+// *
+// **
+// ***
+// ****
+// *****
+
+
+starsFive(b);
+
+// *****
+// *   *
+// *   *
+// *   *
+// *****
+
+// 00 01 02 03 04
+// 10 11 12 13 14
+// 20 21 22 23 24
+// 30 31 32 33 34
+// 40 41 42 43 44
+
+
+// Functions
+
+function starsFive(numberOfStars) {
+  for (var i = 0; i < numberOfStars; i++) {
+    for (var j = 0; j < numberOfStars; j++) {
+      if(j %2 == 0 ){
+        process.stdout.write("*");
+      }else{
+        process.stdout.write(" ");
+      }
+    }
+    process.stdout.write("\n");
+  }
+}
+
+
+
+// 
+
+function starsFour(numberOfStars) {
+
+  for (var i = 0; i < numberOfStars; i++) {
+    for (var j = 0; j <= i; j++) {
+      process.stdout.write("*");
+    }
+    process.stdout.write("\n");
+  }
+}
+
+
+
+function starsThree(numberOfStars) {
+
+  for (var i = 0; i < numberOfStars; i++) {
+    for (var j = 0; j < numberOfStars; j++) {
+      process.stdout.write("*");
+    }
+    process.stdout.write("\n");
+  }
+}
+
+
+function starsTwo(numberOfStars) {
+  for (var i = 0; i < numberOfStars; i++) {
+    process.stdout.write("*");
+  }
+}
+
+function starsOne(numberOfStars) {
+  for (var i = 0; i < numberOfStars; i++) {
+    process.stdout.write("*\n");
+  }
+}

@@ -1,0 +1,56 @@
+
+
+//initiate a n*n board (in an 2D array)
+//randomly generate m number of mines 
+//if position mine == true (game over);
+
+
+
+const boardSize = 5; // size of the board
+var num_mines = 10
+
+var board = createBoard(boardSize);
+
+console.log(board);
+
+putMines(board, num_mines);
+
+console.log(board);
+
+
+function putMines(board, numMines) {
+  for (let i = 0; i < numMines; i++) {
+
+    // Check if the location already has a mine
+    do {
+      var rowRanNum = Math.floor(Math.random() * boardSize);
+      var colRanNum = Math.floor(Math.random() * boardSize);
+    } while (board[rowRanNum][colRanNum] === -1)
+
+    board[rowRanNum][colRanNum] = -1;
+  }
+}
+
+function createBoard(boardSize) {
+  // create an empty 2D array with n rows and n columns
+  let board = new Array(boardSize);
+  for (let i = 0; i < boardSize; i++) {
+    board[i] = new Array(boardSize);
+  }
+
+  // fill the board with default values
+  for (let i = 0; i < boardSize; i++) {
+    for (let j = 0; j < boardSize; j++) {
+      board[i][j] = 0;
+    }
+  }
+  return board;
+}
+
+for (let mainLoop = 0; mainLoop <= 4; mainLoop++){
+  for (let secondLoop = 0; secondLoop <= mainLoop; secondLoop++){
+    for (let innerLoop = 0; innerLoop <= mainLoop; innerLoop++){
+      console.log(mainLoop, secondLoop, innerLoop);
+    }
+  }
+}

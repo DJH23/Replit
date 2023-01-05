@@ -1,0 +1,44 @@
+var nums = [6, 19, 155, 95, 23, 54, 12, 18, 2, 51]
+
+
+
+
+for (var i = 0; i <   nums.length; i++) {
+  console.log(nums[i]);
+  console.log(isEven(nums[i]));
+  console.log(isEven(nums[i]) == true);
+  
+  if(isEven(nums[i])){
+    console.log(nums[i]);
+  }
+}
+
+var nums2 = [61, 6, 155, 95, 130, 54, 12, 98, 21, 52];
+for (var i = 0; i < nums2.length; i++) {
+  isEven(nums2[i]);
+}
+
+
+n = 12
+isEven(n);
+
+
+function isEven(number){
+  if(number % 2 == 0){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+
+
+function biggestNum(num1, num2, num3) {
+  if (num1 > num2 && num1 > num3) {
+    return (num1);
+  } else if (num2 > num1 && num2 > num3) {
+    return (num2);
+  } else {
+    return (num3);
+  }
+}
