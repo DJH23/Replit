@@ -1,58 +1,54 @@
-class Member {
-  constructor(name, age, gender, membershipTier) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
-    this.membershipTier = membershipTier;
+//OOP
+//Inheritance
+
+class Vehicle {
+  constructor(yearOfFabrication, colour, maxSpeed) {
+    this.yearOfFabrication = yearOfFabrication;
+    this.colour = colour;
+    this.maxSpeed = maxSpeed;
   }
 
+  tune() {
+    this.maxSpeed *= 1.1;
+  }
 }
-//jsfiddle.net
 
-class Club {
-  constructor(name, typeOfMusic, capacity, openingTime, closingTime, entranceFee, ageLimit) {
-    this.name = name;
-    this.ageLimit = ageLimit;
-    this.typeOfMusic = typeOfMusic;
-    this.capacity = capacity;
-    this.openingTime = openingTime;
-    this.closingTime = closingTime;
-    this.entranceFee = entranceFee;
-    // Array of member objects
-    this.members = [];
+class Car extends Vehicle {
+  constructor(yearOfFabrication, colour, maxSpeed, engine, transmission) {
+    super(yearOfFabrication, colour, maxSpeed);
+    this.engine = engine;
+    this.transmission = transmission;
+  }
+}
+
+class ElectricCar extends Car {
+  constructor(yearOfFabrication, colour, maxSpeed, engine, transmission, batteryPower) {
+    super(yearOfFabrication, colour, maxSpeed, engine, transmission);
+    this.batteryPower = batteryPower;
   }
 
-  addMember(member) {
-    if (this.ageLimit > member.age) {
-      // throw new Error('Can\'t add member to club(Age limit)');
-      return false;
-    } else {
-      this.members.push(member)
-      return true;
-    }
-
-  }
-
-  removeMember(member) {
-    const index = this.members.indexOf(member);
-    if (index > -1) { // only splice array when item is found
-      this.members.splice(index, 1); // 2nd parameter means remove one item only
-    }
+  // Overridding
+  tune() {
+    this.maxSpeed *= 1.05;
   }
 
 }
 
 
 
-var c1 = new Club("Apolo", "House", 2000, "11pm", "5am", 20, 25);
-var c2 = new Club("Boogy", "Disco", 3000, "10pm", "6am", 10, 21);
+var v1 = new Vehicle(1998, "red", 150);
+var v2 = new Vehicle(1999, "blue", 180);
 
-var m1 = new Member("Joe", 26, "M", "Gold")
-var m2 = new Member("Jane", 22, "F", "Silver")
+var v3 = new Vehicle(2008, "blue", 20);
 
-c1.addMember(m1)
-c1.addMember(m2)
+// v2.tune()
+// console.log(v2.maxSpeed);
+
+var c1 = new Car(1999, "black", 185, "petrol", "M")
+c1.tune()
+console.log(c1.maxSpeed)
 
 
-
-console.log(c1.members)
+var ec1 = new ElectricCar(1999, "black", 185, "petrol", "M", 20000)
+ec1.tune()
+console.log(ec1.maxSpeed)
