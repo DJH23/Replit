@@ -1,54 +1,89 @@
-//OOP
-//Inheritance
+class Room {
+  constructor(x, y, height, width) {
+    this.x = x;
+    this.y = y;
+    this.height = height;
+    this.width = width
+    this.structures = []
+  }
+  remove() {
 
-class Vehicle {
-  constructor(yearOfFabrication, colour, maxSpeed) {
-    this.yearOfFabrication = yearOfFabrication;
+  }
+  clone() {
+
+  }
+}
+
+class Structure {
+  constructor(room) {
+    this.room = room
+  }
+}
+
+class Wall extends Structure {
+  constructor(insideColour, outsideColour) {
+    this.insideColour = insideColour;
+    this.outsideColour = outsideColour;
+  }
+}
+
+class Window extends Structure {
+  constructor(opacity, isOpen) {
+    this.opacity = opacity;
+    this.isOpen = isOpen;
+  }
+  close() {
+    this.isOpen = false;
+  }
+  open() {
+    this.isOpen = true;
+  }
+  // isOpen() {
+  //getter
+  // }
+}
+
+class Furniture {
+  #height;
+
+  constructor(height, width, colour, type) {
+    this.#height = height;
+    this.width = width;
     this.colour = colour;
-    this.maxSpeed = maxSpeed;
+    this.type = type;
+  }
+  // getters and setters
+  getType() {
+    return this.type;
   }
 
-  tune() {
-    this.maxSpeed *= 1.1;
-  }
-}
-
-class Car extends Vehicle {
-  constructor(yearOfFabrication, colour, maxSpeed, engine, transmission) {
-    super(yearOfFabrication, colour, maxSpeed);
-    this.engine = engine;
-    this.transmission = transmission;
-  }
-}
-
-class ElectricCar extends Car {
-  constructor(yearOfFabrication, colour, maxSpeed, engine, transmission, batteryPower) {
-    super(yearOfFabrication, colour, maxSpeed, engine, transmission);
-    this.batteryPower = batteryPower;
+  // Encapsulation
+  setHeight(newHeight) {
+    if (newHeight > 3) {
+      return false;
+    }
+    this.#height = newHeight;
+    return true;
   }
 
-  // Overridding
-  tune() {
-    this.maxSpeed *= 1.05;
+  getHeight() {
+    return this.#height;
   }
 
 }
 
+var f1 = new Furniture(1, 2, "red", "chair");
+
+result = f1.setHeight(2)
+console.log(result)
+console.log(f1.getHeight())
 
 
-var v1 = new Vehicle(1998, "red", 150);
-var v2 = new Vehicle(1999, "blue", 180);
-
-var v3 = new Vehicle(2008, "blue", 20);
-
-// v2.tune()
-// console.log(v2.maxSpeed);
-
-var c1 = new Car(1999, "black", 185, "petrol", "M")
-c1.tune()
-console.log(c1.maxSpeed)
 
 
-var ec1 = new ElectricCar(1999, "black", 185, "petrol", "M", 20000)
-ec1.tune()
-console.log(ec1.maxSpeed)
+
+
+
+
+
+
