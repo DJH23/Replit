@@ -72,11 +72,29 @@ class Furniture {
 
 }
 
-var f1 = new Furniture(1, 2, "red", "chair");
+class Couch extends Furniture{
+  constructor(type, material, numSeats){
+    super();
+    this.type = type;
+    this.material = material;
+    this._numSeats = numSeats;
+  }
+  get numSeats(){
+    return this._numSeats;
+  }
+  set numSeats(numSeats){
+    if(numSeats < 2){
+      throw new Error('numSeats must be greater than one to be a couch');
+    }
+    this._numSeats = numSeats;
+  }
+}
 
-result = f1.setHeight(2)
-console.log(result)
-console.log(f1.getHeight())
+var c1 = new Couch("Chaise Lounge", "fabric", 3);
+console.log(c1.numSeats);
+c1.numSeats = 1;
+console.log(c1.numSeats);
+
 
 
 
