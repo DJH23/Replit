@@ -1,0 +1,168 @@
+class WakeUpConditions {
+  constructor({ dogBarking, buildersNextDoor, drunkTourists, motorbikeEngineNoise, timeOfDay, sleepDepth }) {
+    if (!(dogBarking >= 0) || !(buildersNextDoor.decibel >= 0) || !(buildersNextDoor.duration >= 0) || !(drunkTourists >= 0) || !(motorbikeEngineNoise.decibel >= 0) || !(motorbikeEngineNoise.duration >= 0) || !(timeOfDay >= 0)) {
+      console.log("Invalid input value, please enter a valid value.");
+      return;
+    }
+    this._dogBarking = dogBarking;
+    this._buildersNextDoor = {
+      decibel: buildersNextDoor.decibel,
+      duration: buildersNextDoor.duration
+    };
+    this._drunkTourists = drunkTourists;
+    this._motorbikeEngineNoise = {
+      decibel: motorbikeEngineNoise.decibel,
+      duration: motorbikeEngineNoise.duration
+    };
+    this._timeOfDay = timeOfDay;
+    this._sleepDepth = sleepDepth;
+  }
+  get dogBarking() {
+    return this._dogBarking;
+  }
+  set dogBarking(value) {
+    if(value>10){
+      console.log("error");
+    }else{
+    this._dogBarking = value;
+    }
+  }
+  get buildersNextDoor() {
+    return this._buildersNextDoor;
+  }
+  set buildersNextDoor(value) {
+    this._buildersNextDoor = value;
+  }
+  get drunkTourists() {
+    return this._drunkTourists;
+  }
+  set drunkTourists(value) {
+    this._drunkTourists = value;
+  }
+  get motorbikeEngineNoise() {
+    return this._motorbikeEngineNoise;
+  }
+  set motorbikeEngineNoise(value) {
+    this._motorbikeEngineNoise = value;
+  }
+  get timeOfDay() {
+    return this._timeOfDay;
+  }
+  set timeOfDay(value) {
+    this._timeOfDay = value;
+  }
+  get sleepDepth() {
+    return this._sleepDepth;
+  }
+  set sleepDepth(value) {
+    this._sleepDepth = value;
+  }
+}
+
+class ThingsThatWakeMeUp extends WakeUpConditions {
+  wakeUp() {
+    let message = "";
+    if (this.timeOfDay >= 0 && this.timeOfDay <= 10) {
+      if (this.sleepDepth === "light" && (this.dogBarking >= 1 || (this.buildersNextDoor.decibel >= 60 && this.buildersNextDoor.duration > 3) || this.drunkTourists > 3 || (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3))) {
+        if (this.dogBarking >= 1) {
+          message += "The dog barked " + this.dogBarking + " times during my light sleep.";
+        } else if (this.buildersNextDoor.decibel >= 60 && this.buildersNextDoor.duration > 3) {
+          message += "The builders next door woke me up with a decibel level of " + this.buildersNextDoor.decibel + " during my light sleep.";
+        } else if (this.drunkTourists > 3) {
+          message += "The drunk tourists woke me up.";
+        } else if (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3) {
+          message += "The motorbike engine noise woke me up with a decibel level of " + this.motorbikeEngineNoise.decibel + " during my light sleep.";
+        }
+      } else if (this.sleepDepth === "medium" && (this.dogBarking >= 2 || (this.buildersNextDoor.decibel >= 61 && this.buildersNextDoor.decibel <= 80 && this.buildersNextDoor.duration > 3) || this.drunkTourists > 3 || (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3))) {
+        if (this.dogBarking >= 2) {
+          console.log("I am awake! The dog barked " + this.dogBarking + " times during my medium sleep.");
+        } else if (this.buildersNextDoor.decibel >= 61 && this.buildersNextDoor.decibel <= 80 && this.buildersNextDoor.duration > 3) {
+          console.log("I am awake! The builders next door woke me up with a decibel level of " + this.buildersNextDoor.decibel + " during my medium sleep.");
+        } else if (this.drunkTourists > 3) {
+          console.log("I am awake! The drunk tourists woke me up.");
+        } else if (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3) {
+          console.log("I am awake! The motorbike engine noise woke me up with a decibel level of " + this.motorbikeEngineNoise.decibel + " during my medium sleep.");
+        }
+      } else if (this.sleepDepth === "deep" && (this.dogBarking >= 3 || (this.buildersNextDoor.decibel >= 81 && this.buildersNextDoor.decibel <= 100 && this.buildersNextDoor.duration > 3) || this.drunkTourists > 3 || (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3))) {
+        if (this.dogBarking >= 3) {
+          console.log("I am awake! The dog barked " + this.dogBarking + " times during my medium sleep.");
+        } else if (this.buildersNextDoor.decibel >= 61 && this.buildersNextDoor.decibel <= 80 && this.buildersNextDoor.duration > 3) {
+          console.log("I am awake! The builders next door woke me up with a decibel level of " + this.buildersNextDoor.decibel + " during my medium sleep.");
+        } else if (this.drunkTourists > 3) {
+          console.log("I am awake! The drunk tourists woke me up.");
+        } else if (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3) {
+          console.log("I am awake! The motorbike engine noise woke me up with a decibel level of " + this.motorbikeEngineNoise.decibel + " during my medium sleep.");
+        }
+      } else if (this.sleepDepth === "deep" && (this.dogBarking >= 3 || (this.buildersNextDoor.decibel >= 81 && this.buildersNextDoor.duration > 3) || this.drunkTourists > 3 || (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3))) {
+        if (this.dogBarking >= 3) {
+          console.log("I am awake! The dog barked " + this.dogBarking + " times during my deep sleep.");
+        } else if (this.buildersNextDoor.decibel >= 81 && this.buildersNextDoor.duration > 3) {
+          console.log("I am awake! The builders next door woke me up with a decibel level of " + this.buildersNextDoor.decibel + " during my deep sleep.");
+        } else if (this.drunkTourists > 3) {
+          console.log("I am awake! The drunk tourists woke me up.");
+        } else if (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3) {
+          console.log("I am awake! The motorbike engine noise woke me up with a decibel level of " + this.motorbikeEngineNoise.decibel + " during my light sleep.");
+        }
+      } else if (this.sleepDepth === "medium" && (this.dogBarking >= 2 || (this.buildersNextDoor.decibel >= 61 && this.buildersNextDoor.decibel <= 80 && this.buildersNextDoor.duration > 3) || this.drunkTourists > 3 || (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3))) {
+        if (this.dogBarking >= 2) {
+          console.log("I am awake! The dog barked " + this.dogBarking + " times during my medium sleep.");
+        } else if (this.buildersNextDoor.decibel >= 61 && this.buildersNextDoor.decibel <= 80 && this.buildersNextDoor.duration > 3) {
+          console.log("I am awake! The builders next door woke me up with a decibel level of " + this.buildersNextDoor.decibel + " during my medium sleep.");
+        } else if (this.drunkTourists > 3) {
+          console.log("I am awake! The drunk tourists woke me up.");
+        } else if (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3) {
+          console.log("I am awake! The motorbike engine noise woke me up with a decibel level of " + this.motorbikeEngineNoise.decibel + " during my medium sleep.");
+        } else if (this.buildersNextDoor.decibel >= 61 && this.buildersNextDoor.decibel <= 80 && this.buildersNextDoor.duration > 3) {
+          console.log("I am awake! The builders next door woke me up with a decibel level of " + this.buildersNextDoor.decibel + " during my medium sleep.");
+        } else if (this.drunkTourists > 3) {
+          console.log("I am awake! The drunk tourists woke me up.");
+        } else if (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3) {
+          console.log("I am awake! The motorbike engine noise woke me up with a decibel level of " + this.motorbikeEngineNoise.decibel + " during my medium sleep.");
+        }
+      } else if (this.sleepDepth === "deep" && (this.dogBarking >= 3 || (this.buildersNextDoor.decibel > 80 && this.buildersNextDoor.duration > 3) || this.drunkTourists > 3 || (this.motorbikeEngineNoise.decibel > 80 && this.motorbikeEngineNoise.duration > 3))) {
+        if (this.dogBarking >= 3) {
+          console.log("I am awake! The dog barked " + this.dogBarking + " times during my deep sleep.");
+        } else if (this.buildersNextDoor.decibel > 80 && this.buildersNextDoor.duration > 3) {
+          console.log("I am awake! The builders next door woke me up with a decibel level of " + this.buildersNextDoor.decibel + " during my medium sleep.");
+        } else if (this.drunkTourists > 3) {
+          console.log("I am awake! The drunk tourists woke me up during my medium sleep.");
+        } else if (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3) {
+          console.log("I am awake! The motorbike engine noise woke me up with a decibel level of " + this.motorbikeEngineNoise.decibel + " during my medium sleep.");
+        }
+      } else if (this.sleepDepth === "deep" && (this.dogBarking >= 3 || (this.buildersNextDoor.decibel >= 61 && this.buildersNextDoor.decibel <= 80 && this.buildersNextDoor.duration > 3) || this.drunkTourists > 3 || (this.motorbikeEngineNoise.decibel >= 80 && this.motorbikeEngineNoise.duration > 3))) {
+        if (this.dogBarking >= 3) {
+          console.log("I am awake! The dog barked " + this.dogBarking + " times during my deep sleep.");
+        } else if (this.buildersNextDoor.decibel >= 61 && this.buildersNextDoor.decibel <= 80 && this.buildersNextDoor.duration > 3) {
+          console.log("I am awake! The builders next door woke me up with a decibel level of " + this.buildersNextDoor.decibel + " during my deep sleep.");
+        } else if (this.drunkTourists > 3) {
+          console.log("I am awake! The drunk tourists woke me up during my deep sleep.");
+        } else if (this.motorbikeEngineNoise.decibel > 80 && this.motorbikeEngineNoise.duration > 3) {
+          console.log("I am awake! The motorbike engine noise woke me up with a decibel level of " + this.motorbikeEngineNoise.decibel + " during my deep sleep.");
+        }
+      }
+    }
+  }
+}
+
+
+
+const c = new ThingsThatWakeMeUp({
+dogBarking: 4,
+buildersNextDoor: { decibel: 65, duration: 4 },
+drunkTourists: 4,
+motorbikeEngineNoise: { decibel: 85, duration: 5 },
+timeOfDay: 6,
+sleepDepth: "deep"
+});
+
+
+c.dogBarking = 11
+console.log(c.dogBarking)
+
+for eachthing in allthing
+  print(eachthing.dogBarking)
+
+
+
+
+c.wakeUp();
