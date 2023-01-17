@@ -1,11 +1,14 @@
 class Mobile {
+  static CALL_COST = 0.245;
+  static TEXT_COST = 0.078;
+
+
   constructor(accType, device, number) {
     this._accType = accType;
     this._device = device;
     this._number = number;
     this._balance = 0.0;
-    this.CALL_COST = 0.245;
-    this.TEXT_COST = 0.078;
+
   }
 
   // Getter for account type
@@ -41,7 +44,7 @@ class Mobile {
     this._balance = balance;
   }
 
-//Methods
+  //Methods
 
   // Add credit function
   addCredit(amount) {
@@ -51,38 +54,46 @@ class Mobile {
 
   // Make call function
   makeCall(minutes) {
-    if (this._balance < this.CALL_COST * minutes) {
+    if (this._balance < Mobile.CALL_COST * minutes) {
       console.log("Insufficient credit to make call. Please add more credit.");
     } else {
-      this._balance -= this.CALL_COST * minutes;
+      this._balance -= Mobile.CALL_COST * minutes;
       console.log("Call made. New balance: €" + this._balance.toFixed(2));
     }
   }
 
   // Send text function
-   sendText() {
-    if (this._balance < this.TEXT_COST) {
+  sendText() {
+    if (this._balance < Mobile.TEXT_COST) {
       console.log("Insufficient credit to send text. Please add more credit.");
     } else {
-      this._balance -= this.TEXT_COST;
+      this._balance -= Mobile.TEXT_COST;
       console.log("Text sent. New balance: €" + this._balance.toFixed(2));
     }
   }
+
+  showInfo() {
+    console.log("Account Type: " + this.accType + "\nMobile Number: " + this.number + "\nDevice: " + this.device + "\nBalance: €" + this.balance);
+  }
+
 }
 
 let jimMobile = new Mobile("Monthly", "Samsung Galaxy S6", "0771222334")
-console.log("Account Type: " + jimMobile.accType + "\nMobile Number: " + jimMobile.number + "\nDevice: " + jimMobile.device + "\nBalance: €" + jimMobile.balance);
+let JoesMobile = new Mobile("Monthly", "iPhone", "0221264234")
+JoesMobile.CALL_COST;
+
+jimMobile.showInfo();
 
 jimMobile.accType = "PAYG";
 jimMobile.device = "iPhone 6S";
 jimMobile.number = "07713334466";
 jimMobile.balance = 15.50;
 
-console.log("Account Type: " + jimMobile.accType + "\nMobile Number: " + jimMobile.number + "\nDevice: " + jimMobile.device + "\nBalance: €" + jimMobile.balance);
+jimMobile.showInfo();
 
-console.log(jimMobile.addCredit(10.0));
-console.log(jimMobile.makeCall(5));
-console.log(jimMobile.sendText(2)); 
+jimMobile.addCredit(10.0);
+jimMobile.makeCall(5)
+jimMobile.sendText(2);
 
 /* class Employee {
   constructor(employeeName, currentSalary) {
@@ -136,7 +147,7 @@ class Car {
     this.fuelAmount = 0;
     this.totalMiles = 0;
   }
-  
+
   getFuelAmount() {
     return Math.round(this.fuelAmount);
   }
@@ -144,12 +155,12 @@ class Car {
   getTotalMiles() {
     return this.totalMiles;
   }
-  
+
   setTotalMiles(miles) {
     this.totalMiles = miles;
     return this.totalMiles
   }
-  
+
   printFuelCost() {
     return FUEL_COST.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) + ` per gallon`;
   }
@@ -157,20 +168,20 @@ class Car {
   getFuelEfficiency(){
     return this.fuelEfficiency
   }
-  
+
   addFuel(gallons) {
     this.fuelAmount += this.convertToLitres(gallons);
     return this.calcCost(this.fuelAmount);
   }
-  
+
   calcCost(fuelAmount) {
     return (fuelAmount * FUEL_COST).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
   }
-  
+
   convertToLitres(gallons) {
     return gallons * 4.546;
   }
-  
+
   drive(miles) {
     const gallons = miles / this.fuelEfficiency;
     this.fuelAmount -= this.convertToLitres(gallons);
