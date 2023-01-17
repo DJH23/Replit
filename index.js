@@ -2,7 +2,6 @@ class Mobile {
   static CALL_COST = 0.245;
   static TEXT_COST = 0.078;
 
-
   constructor(accType, device, number) {
     this._accType = accType;
     this._device = device;
@@ -79,21 +78,90 @@ class Mobile {
 }
 
 let jimMobile = new Mobile("Monthly", "Samsung Galaxy S6", "0771222334")
-let JoesMobile = new Mobile("Monthly", "iPhone", "0221264234")
-JoesMobile.CALL_COST;
-
-jimMobile.showInfo();
-
-jimMobile.accType = "PAYG";
-jimMobile.device = "iPhone 6S";
-jimMobile.number = "07713334466";
-jimMobile.balance = 15.50;
+let JoesMobile = new Mobile("PAYG", "iPhone", "0221264234")
 
 jimMobile.showInfo();
 
 jimMobile.addCredit(10.0);
 jimMobile.makeCall(5)
 jimMobile.sendText(2);
+console.log();
+jimMobile.showInfo();
+console.log();
+
+JoesMobile.showInfo();
+
+JoesMobile.accType = "Monthly";
+JoesMobile.device = "Nokia 6680";
+JoesMobile.addCredit(40.0);
+JoesMobile.makeCall(19)
+JoesMobile.sendText(4);
+console.log();
+JoesMobile.showInfo();
+
+class Smartwatch extends Mobile {
+
+  constructor(accType, device, number, smartwatchBrand) {
+    super(accType, device, number);
+    this._smartwatchBrand = smartwatchBrand;
+    this._notificationSetting = "silent";
+  }
+
+  // Getter for smartwatch brand
+  get smartwatchBrand() {
+    return this._smartwatchBrand;
+  }
+  // Setter for smartwatch brand
+  set smartwatchBrand(smartwatchBrand) {
+    this._smartwatchBrand = smartwatchBrand;
+  }
+
+  // Getter for notification setting
+  get notificationSetting() {
+    return this._notificationSetting;
+  }
+  // Setter for notification setting
+  set notificationSetting(notificationSetting) {
+    this._notificationSetting = notificationSetting;
+    if (this._notificationSetting === "silent") {
+      this._notificationSetting = "silent";
+      console.log("Notifications set to silent mode.");
+    } else if (this._notificationSetting === "vibrate") {
+      this._notificationSetting = "vibrate";
+      console.log("Notifications set to vibrate mode.");
+    } else if (this._notificationSetting === "sound") {
+      this._notificationSetting = "sound";
+      console.log("Notifications set to sound mode.");
+    }
+  }
+
+  // Count steps function
+  pedometer(steps) {
+    if (steps < 1000) {
+      console.log("You've only walked " + steps + " steps. Get off your fat arse and go for a walk.");
+    } else if (steps >= 1000 && steps < 9999) {
+      console.log("You've walked " + steps + " steps. Okay, but you could still walk a bit more");
+    } else {
+      console.log("Jesus Christ! You've walked " + steps + " steps. Stop walking now. You're annoying me")
+    }
+  }
+
+  showInfo() {
+    console.log("Account Type: " + this.accType + "\nMobile Number: " + this.number + "\nDevice: " + this.device + "\nSmartwatch Brand: " + this.smartwatchBrand + "\nNotification Setting: " + this.notificationSetting + " mode" + "\nBalance: €" + this.balance);
+  }
+}
+
+let jimsSmartwatch = new Smartwatch("Monthly", "Apple Watch", "07722334455", "Apple");
+console.log();
+jimsSmartwatch.showInfo();
+console.log();
+jimsSmartwatch.notificationSetting = "vibrate";
+jimsSmartwatch.addCredit(15.0);
+jimsSmartwatch.pedometer(6000);
+jimsSmartwatch.notificationSetting = "silent";
+jimsSmartwatch.notificationSetting = "sound";
+console.log();
+jimsSmartwatch.showInfo();
 
 /* class Employee {
   constructor(employeeName, currentSalary) {
