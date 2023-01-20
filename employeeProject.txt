@@ -1,0 +1,44 @@
+class Employee {
+  constructor(employeeName, currentSalary) {
+    this.name = employeeName;
+    this.salary = currentSalary;
+  }
+  getName() {
+    return this.name;
+  }
+  getSalary() {
+    return this.salary.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+  raiseSalary(percent) {
+    this.salary += this.salary * percent / 100;
+  }
+  tax() {
+    let tax = 0;
+    if (this.salary <= 18200) {
+      tax = 0;
+    } else if (this.salary <= 37000) {
+      tax = (this.salary - 18200) * 0.19;
+    } else if (this.salary <= 90000) {
+      tax = 3572 + (this.salary - 37000) * 0.325;
+    } else if (this.salary <= 180000) {
+      tax = 20797 + (this.salary - 90000) * 0.37;
+    } else {
+      tax = 54096 + (this.salary - 180000) * 0.45;
+    }
+    return tax.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+}
+
+const employee = new Employee("Darren Heath", 90000);
+console.log(`Name: ${employee.getName()}`);
+console.log(`Salary: ${employee.getSalary()}`);
+employee.raiseSalary(10);
+console.log(`Salary after raise: ${employee.getSalary()}`);
+console.log(`Tax: ${employee.tax()}`);
+
+const employee2 = new Employee("Pouya The Greatest", 125000);
+console.log(`Name: ${employee2.getName()}`);
+console.log(`Salary: ${employee2.getSalary()}`);
+employee2.raiseSalary(20);
+console.log(`Salary after raise: ${employee2.getSalary()}`);
+console.log(`Tax: ${employee2.tax()}`);

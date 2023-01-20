@@ -1,0 +1,157 @@
+class Mobile {
+  static CALL_COST = 0.245;
+  static TEXT_COST = 0.078;
+
+  constructor(accType, device, number) {
+    this._accType = accType;
+    this._device = device;
+    this._number = number;
+    this._balance = 0.0;
+
+  }
+
+  // Getter for account type
+  get accType() {
+    return this._accType;
+  }
+  // Setter for account type
+  set accType(accType) {
+    this._accType = accType;
+  }
+  // Getter for device
+  get device() {
+    return this._device;
+  }
+  // Setter for device
+  set device(device) {
+    this._device = device;
+  }
+  // Getter for number
+  get number() {
+    return this._number;
+  }
+  // Setter for number
+  set number(number) {
+    this._number = number;
+  }
+  // Getter for balance
+  get balance() {
+    return this._balance.toFixed(2);
+  }
+  // Setter for balance
+  set balance(balance) {
+    this._balance = balance;
+  }
+
+  //Methods
+
+  // Add credit function
+  addCredit(amount) {
+    this._balance += amount;
+    console.log("€" + amount + " added successfully. New balance: €" + this._balance.toFixed(2));
+  }
+
+  // Make call function
+  makeCall(minutes) {
+    if (this._balance < Mobile.CALL_COST * minutes) {
+      console.log("Insufficient credit to make call. Please add more credit.");
+    } else {
+      this._balance -= Mobile.CALL_COST * minutes;
+      console.log("Call made. New balance: €" + this._balance.toFixed(2));
+    }
+  }
+
+  // Send text function
+  sendText() {
+    if (this._balance < Mobile.TEXT_COST) {
+      console.log("Insufficient credit to send text. Please add more credit.");
+    } else {
+      this._balance -= Mobile.TEXT_COST;
+      console.log("Text sent. New balance: €" + this._balance.toFixed(2));
+    }
+  }
+
+  showInfo() {
+    console.log("Account Type: " + this.accType + "\nMobile Number: " + this.number + "\nDevice: " + this.device + "\nBalance: €" + this.balance);
+  }
+
+}
+
+let jimMobile = new Mobile("Monthly", "Samsung Galaxy S6", "0771222334")
+let JoesMobile = new Mobile("PAYG", "iPhone", "0221264234")
+
+jimMobile.showInfo();
+
+jimMobile.addCredit(10.0);
+jimMobile.makeCall(5)
+jimMobile.sendText(2);
+console.log();
+jimMobile.showInfo();
+console.log();
+
+JoesMobile.showInfo();
+
+JoesMobile.accType = "Monthly";
+JoesMobile.device = "Nokia 6680";
+JoesMobile.addCredit(40.0);
+JoesMobile.makeCall(19)
+JoesMobile.sendText(4);
+console.log();
+JoesMobile.showInfo();
+
+class Smartwatch extends Mobile {
+
+  constructor(accType, device, number, smartwatchBrand) {
+    super(accType, device, number);
+    this._smartwatchBrand = smartwatchBrand;
+    this._notificationSetting = "silent";
+  }
+
+  // Getter for smartwatch brand
+  get smartwatchBrand() {
+    return this._smartwatchBrand;
+  }
+  // Setter for smartwatch brand
+  set smartwatchBrand(smartwatchBrand) {
+    this._smartwatchBrand = smartwatchBrand;
+  }
+
+  // Getter for notification setting
+  get notificationSetting() {
+    return this._notificationSetting;
+  }
+  // Setter for notification setting
+  set notificationSetting(notificationSetting) {
+
+    this._notificationSetting = notificationSetting;
+    console.log(`Notifications set to ${notificationSetting} mode.`);
+
+  }
+
+  // Count steps function
+  pedometer(steps) {
+    if (steps < 1000) {
+      console.log("You've only walked " + steps + " steps. Get off your fat arse and go for a walk.");
+    } else if (steps >= 1000 && steps < 9999) {
+      console.log("You've walked " + steps + " steps. Okay, but you could still walk a bit more");
+    } else {
+      console.log("Jesus Christ! You've walked " + steps + " steps. Stop walking now. You're annoying me")
+    }
+  }
+
+  showInfo() {
+    console.log("Account Type: " + this.accType + "\nMobile Number: " + this.number + "\nDevice: " + this.device + "\nSmartwatch Brand: " + this.smartwatchBrand + "\nNotification Setting: " + this.notificationSetting + " mode" + "\nBalance: €" + this.balance);
+  }
+}
+
+let jimsSmartwatch = new Smartwatch("Monthly", "Apple Watch", "07722334455", "Apple");
+console.log();
+jimsSmartwatch.showInfo();
+console.log();
+jimsSmartwatch.notificationSetting = "vibrate";
+jimsSmartwatch.addCredit(15.0);
+jimsSmartwatch.pedometer(6000);
+jimsSmartwatch.notificationSetting = "silent";
+jimsSmartwatch.notificationSetting = "sound";
+console.log();
+jimsSmartwatch.showInfo();
